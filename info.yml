@@ -1,0 +1,15 @@
+project:
+    name: CinemaChic
+    owner: 'Grupo 12'
+    teamId: '12'
+    identities: {}
+    notifications: {}
+    members:
+        member1:
+            name: Jaime
+            surname: 'Borrego Conde' 
+            githubUsername: JaimeBorregoConde
+        member2:
+            name: Marta
+            surname: 'Reyes Lopez'
+            githubUsername: martirl11

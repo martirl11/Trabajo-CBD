@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.forms import ValidationError
-from django.db import connections
+from django.db import models
 
 TIPO_ROPA = (
     ('Pantalon', 'Pantalón'),
@@ -26,6 +26,8 @@ class Item (models.Model):
     descripcion = models.TextField(verbose_name="Descripción")
     precio = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)], verbose_name="Precio (€)")
     imagen = models.ImageField(verbose_name="Imagen", upload_to='./static/img/item/', null=True, blank=True)
+    pelicula = models.TextField(blank=True, null=True, verbose_name='Peliculas')
+    categoria = models.TextField(blank=True, verbose_name='Categorias')
 
     def __str__(self):
         return self.name
@@ -36,9 +38,6 @@ class Item (models.Model):
             raise ValidationError('El precio no puede ser negativo')
         super(Item, self).save(*args, **kwargs)
    
-    def get_merchandise(self):
-        # Configurar la conexión a la base de datos de merchandisin
-        connections['chic'].cursor()
      
 
 

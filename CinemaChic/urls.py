@@ -16,8 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from main import views
+from cinema import views as cinema_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', cinema_views.index),
+    path('ocupaciones_usuarios/',cinema_views.mostrar_ocupaciones),
+    path('puntuaciones_usuario/',cinema_views.mostrar_puntuaciones_usuario),
+    #pasamos el parametro <int:pag> para la paginacion
+    path('mejores_peliculas/<int:pag>',cinema_views.mostrar_mejores_peliculas),
+    path('busqueda_peliculas/',cinema_views.mostrar_peliculas_year),
+    path('index.html/', cinema_views.index),
+    path('populate/', cinema_views.populateDatabase),
+    path('ingresar/', cinema_views.ingresar),    
+    path('cargarsr/',cinema_views.cargarSR),
+    path('recomendar/',cinema_views.recomendar2peliculas),
+    path('recomendarD/',cinema_views.recomendar2peliculasD)
 ]

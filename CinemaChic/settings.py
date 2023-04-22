@@ -87,7 +87,7 @@ DATABASES = {
         "HOST": "localhost",
         "PORT": "1521",
     },
-    'chic': {
+    'chic_db': {
         'ENGINE': 'django.db.backends.oracle', 
         'NAME': 'orcl',# Nombre de la base de datos de merchandising         
         'USER': 'root_cbd_2',  # Usuario de la base de datos de merchandising         
@@ -97,7 +97,9 @@ DATABASES = {
     },
 
 }
-
+DATABASE_ROUTERS = [
+    'CinemaChic.routers.ChicRouter',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

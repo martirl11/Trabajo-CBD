@@ -1,0 +1,10 @@
+python manage.py migrate auth --database=default
+python manage.py migrate admin --database=default
+python manage.py migrate contenttypes --database=default
+python manage.py migrate sessions --database=default
+python manage.py migrate cinema --database=default
+python manage.py migrate auth --database=chic
+python manage.py migrate contenttypes --database=chic
+python manage.py migrate sessions --database=chic
+python manage.py migrate chic --database=chic
+python manage.py migrate admin --database=chic

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'cinema',
+    'chic',
 ]
 
 MIDDLEWARE = [
@@ -79,12 +81,21 @@ WSGI_APPLICATION = 'CinemaChic.wsgi.application'
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.oracle',
-        "NAME": "CinemaChicdb",
-        "USER": "CinemaChic-user",
-        "PASSWORD": "CinemaChic-password",
+        "NAME": "orcl",
+        "USER": "root_cbd",
+        "PASSWORD": "trabaj0CBD",
         "HOST": "localhost",
-        "PORT": "3307",
-    }
+        "PORT": "1521",
+    },
+    'chic': {
+        'ENGINE': 'django.db.backends.oracle', 
+        'NAME': 'orcl',# Nombre de la base de datos de merchandising         
+        'USER': 'root_cbd_2',  # Usuario de la base de datos de merchandising         
+        'PASSWORD': 'trabaj0CBD',  # Contraseña de la base de datos de merchandising        
+        'HOST': 'localhost',  # Host de la base de datos de merchandising         
+        'PORT': '1521',  # Puerto de la base de datos de merchandising     
+    },
+
 }
 
 

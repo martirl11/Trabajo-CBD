@@ -1,15 +1,15 @@
-{% extends "layouts/master_full_width.html" %}
+{% extends "master.html" %}
 {% load static %}
 
 {% block extrahead %} 
 <link rel="stylesheet" type="text/css" href="{% static 'styles/users.css' %}">
 {% endblock %}
 
-{% block content %}
+{% block contenido %}
 
-<div id="section-user">
+<div class="container justify-content-md-center">
     {% include 'title.html' with title="Añadir" %}
-
+    
 
 
     {% if messages %}

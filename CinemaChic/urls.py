@@ -32,6 +32,9 @@ urlpatterns = [
     path('ingresar/', cinema_views.ingresar),    
     path('cargarsr/',cinema_views.cargarSR),
     path('recomendar/',cinema_views.recomendar2peliculas),
-    path('recomendarD/',cinema_views.recomendar2peliculasD)
-    
+    path('recomendarD/',cinema_views.recomendar2peliculasD),
+    path('ropa/create/',chic_views.ropa_create),
+    path('taza/create/',chic_views.taza_create),
+    path('poster/create/',chic_views.poster_create),
+    path('accesorio/create/',chic_views.accesorio_create),
 ]

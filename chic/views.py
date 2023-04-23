@@ -22,7 +22,7 @@ def ropa_create(request):
         "title": "Añadir Ropa", 
         }
 
-    return render(request, 'ropa/create.html', context)
+    return render(request, 'create.html', context)
 
 def taza_create(request):
     form = CreateTazaForm()
@@ -38,9 +38,10 @@ def taza_create(request):
     context = {
         "form": form, 
         "title": "Añadir Taza", 
+        "item":"accesorio",
         }
 
-    return render(request, 'taza/create.html', context)
+    return render(request, 'create.html', context)
 
 def poster_create(request):
     form = CreatePosterForm()
@@ -56,9 +57,10 @@ def poster_create(request):
     context = {
         "form": form, 
         "title": "Añadir Poster", 
+        "item":"accesorio", 
         }
 
-    return render(request, 'poster/create.html', context)
+    return render(request, 'create.html', context)
 
 def accesorio_create(request):
     form = CreateAccesorioForm()
@@ -74,6 +76,7 @@ def accesorio_create(request):
     context = {
         "form": form, 
         "title": "Añadir Accesorio", 
+        "item":"accesorio",
         }
 
-    return render(request, 'accesorio/create.html', context)
+    return render(request, 'create.html', context)

@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from main import views
 from cinema import views as cinema_views
+from chic import views as chic_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +33,5 @@ urlpatterns = [
     path('cargarsr/',cinema_views.cargarSR),
     path('recomendar/',cinema_views.recomendar2peliculas),
     path('recomendarD/',cinema_views.recomendar2peliculasD)
+    
 ]

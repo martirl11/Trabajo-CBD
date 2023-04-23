@@ -1,0 +1,46 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/components/navbar.css' %}">
+
+<nav class="navbar navbar-expand-md border-bottom border-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" style = "font-size:50px; font-weight: bold" href="/">CinemaChic</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse px-md-5" id="navbarNav">
+        <ul class="navbar-nav d-flex justify-content-between w-100">
+            
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="/">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if 'user' in request.path %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Usuarios
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/ocupaciones_usuarios">Ocupaciones</a></li>
+                    <li><a class="dropdown-item" href="/puntuaciones_usuario">Puntuaciones</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if 'donation' in request.path or 'subsidy' in request.path %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Peliculas
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/busqueda_peliculas">Busqueda</a></li>
+                    <li><a class="dropdown-item" href="/mejores_peliculas/1">Mejores</a></li>
+                </ul>
+            </li>
+            {% if user.is_authenticated %}
+
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/ingresar">Iniciar sesión</a>
+            </li>
+            {% endif %}
+            
+        </ul>
+        </div>
+    </div>
+</nav>

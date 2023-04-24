@@ -6,13 +6,15 @@ class CreateRopaForm(forms.ModelForm):
         model = Ropa
         exclude = ['id']
         widgets = {
-            'price': forms.NumberInput(attrs={'step': "0.01"}),
-        }
+            'precio ': forms.NumberInput(attrs={'step': "0.01"}),
+            'pelicula': forms.Textarea(attrs={'placeholder':'Debe seguir la siguiente estructura: pelicula1,pelicula2,...'}),
+            'categoria': forms.Textarea(attrs={'placeholder':'Debe seguir la siguiente estructura: categoria1,categoria2,...'}),
+        }   
         error_messages = {
             'nombre': {
                 'required': 'Por favor ingrese el nombre del artículo.',
             },
-            'price': {
+            'precio ': {
                 'required': 'Por favor ingrese el precio del artículo.',
             },
             'talla': {
@@ -26,13 +28,15 @@ class CreatePosterForm(forms.ModelForm):
         model = Poster
         exclude = ['id']
         widgets = {
-            'price': forms.NumberInput(attrs={'step': "0.01"}),
+            'precio ': forms.NumberInput(attrs={'step': "0.01"}),
+            'pelicula': forms.Textarea(attrs={'placeholder':'Debe seguir la siguiente estructura: pelicula1,pelicula2,...'}),
+            'categoria': forms.Textarea(attrs={'placeholder':'Debe seguir la siguiente estructura: categoria1,categoria2,...'}),
         }
         error_messages = {
             'nombre': {
                 'required': 'Por favor ingrese el nombre del artículo.',
             },
-            'price': {
+            'precio ': {
                 'required': 'Por favor ingrese el precio del artículo.',
             },
             'tamaño': {
@@ -46,13 +50,15 @@ class CreateAccesorioForm(forms.ModelForm):
         model = Accesorio
         exclude = ['id']
         widgets = {
-            'price': forms.NumberInput(attrs={'step': "0.01"}),
+            'precio ': forms.NumberInput(attrs={'step': "0.01"}),
+            'pelicula': forms.Textarea(attrs={'placeholder':'Debe seguir la siguiente estructura: pelicula1,pelicula2,...'}),
+            'categoria': forms.Textarea(attrs={'placeholder':'Debe seguir la siguiente estructura: categoria1,categoria2,...'}),
         }
         error_messages = {
             'nombre': {
                 'required': 'Por favor ingrese el nombre del artículo.',
             },
-            'price': {
+            'precio ': {
                 'required': 'Por favor ingrese el precio del artículo.',
             },
             'tamaño': {
@@ -66,13 +72,15 @@ class CreateTazaForm(forms.ModelForm):
         model = Taza
         exclude = ['id']
         widgets = {
-            'price': forms.NumberInput(attrs={'step': "0.01"}),
+            'precio ': forms.NumberInput(attrs={'step': "0.01"}),
+            'pelicula': forms.Textarea(attrs={'placeholder':'Debe seguir la siguiente estructura: pelicula1,pelicula2,...'}),
+            'categoria': forms.Textarea(attrs={'placeholder':'Debe seguir la siguiente estructura: categoria1,categoria2,...'}),
         }
         error_messages = {
             'nombre': {
                 'required': 'Por favor ingrese el nombre del artículo.',
             },
-            'price': {
+            'precio ': {
                 'required': 'Por favor ingrese el precio del artículo.',
             },
             'capacidad': {

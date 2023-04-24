@@ -30,11 +30,11 @@ class Item (models.Model):
     categoria = models.TextField(blank=True, verbose_name='Categorias')
 
     def __str__(self):
-        return self.name
+        return self.nombre
 
     def save(self, *args, **kwargs):
 
-        if self.price < 0:  
+        if self.precio < 0:  
             raise ValidationError('El precio no puede ser negativo')
         super(Item, self).save(*args, **kwargs)
    
@@ -48,7 +48,7 @@ class Ropa (Item):
     tipoRopa = models.CharField(max_length=50,choices=TIPO_ROPA, verbose_name="Tipo de ropa")
 
     def __str__(self):
-        return self.name
+        return self.nombre
     
     class Meta:
         ordering = ('nombre', )
@@ -60,7 +60,7 @@ class Poster (Item):
     tipo = models.CharField(max_length=100, choices=TIPO_POSTER, verbose_name="Tipo")
 
     def __str__(self):
-        return self.name
+        return self.nombre
     
     class Meta:
         ordering = ('nombre', )
@@ -75,7 +75,7 @@ class Taza (Item):
     artista = models.CharField(max_length=100, verbose_name="Artista")
 
     def __str__(self):
-        return self.name
+        return self.nombre
     
     class Meta:
         ordering = ('nombre', )
@@ -88,7 +88,7 @@ class Accesorio (Item):
     artista = models.CharField(max_length=100, verbose_name="Artista")
 
     def __str__(self):
-        return self.name
+        return self.nombre
     
     class Meta:
         ordering = ('nombre', )

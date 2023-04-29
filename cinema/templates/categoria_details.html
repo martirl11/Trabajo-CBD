@@ -1,0 +1,64 @@
+{% extends "master.html" %}
+{% load static %}
+
+
+{% block extrahead %} 
+<link rel="stylesheet" type="text/css" href="{% static 'styles/users.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static 'styles/details.css' %}"> 
+
+{% endblock %}
+
+
+{% block contenido %}
+<div class="container">
+    <h2 class="bg-warning rounded-pill text-center"> {{title}}</h2> 
+    
+    <div id="section-user" class="p-2">
+        <div class="row">
+            <div class="col align-self-end">
+                <a href="/categoria/list" >
+                    <button class='btn btn-dark'   type="button" style='width:20%'>Volver al Listado</button></a>
+            
+            </div>
+        </div>
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12">
+                <div class="row justify-content-start align-items-center">
+                
+                    <div class="d-flex justify-content-md-start justify-content-center col-md-3 col-12 py-3">
+                        <img style="width: 150px; height: 150px; object-fit: cover; border-radius: 30px;" alt="{{ item.imagen }}" src="{% if item.imagen %}  ../../{{item.imagen }}{% else %}{% static 'img/person-icon.svg' %}{% endif %}" />
+                    </div>
+
+                <div class="col-md-9 col-12 py-3">
+                    
+                    
+
+            </div>
+
+        
+        </div>
+    
+    
+
+    </div>
+    
+    <div class='container'>
+        <h5 class="bg-warning rounded-pill text-center">Peliculas</h5> 
+        {% for row in pelis %}
+        <div class="row rounded border border-dark mb-3 py-2">
+            <h5><strong>{{row.titulo}}</strong></h5>
+            
+        </div>
+        {% endfor %}
+        
+        <h5 class="bg-warning rounded-pill text-center">Merchandising</h5> 
+        {% for row in merchan %}
+        <div class="row rounded border border-dark mb-3 py-2">
+            <h5><strong>{{row.nombre}}</strong></h5>
+            
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}

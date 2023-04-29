@@ -263,9 +263,11 @@ def obtener_peliculas(peliculas):
     resultado = cursor.callfunc("QUE_PELICULA", cx_Oracle.STRING, [peliculas])
     
     list_peliculas = []
-    print(list_peliculas)
-    for r in resultado[1:].split(","):
-        list_peliculas.append(Pelicula.objects.get(idPelicula=r))
+    if resultado :
+        for r in resultado.split(","):
+            if len(r)>0:
+                list_peliculas.append(Pelicula.objects.get(idPelicula=r))
+
     cursor.close()
     
     return list_peliculas
@@ -276,9 +278,11 @@ def obtener_categorias(categorias):
     resultado = cursor.callfunc("QUE_CATEGORIA", cx_Oracle.STRING, [categorias])
     
     list_categorias = []
-    print(list_categorias)
-    for r in resultado[1:].split(","):
-        list_categorias.append(Categoria.objects.get(idCategoria=r))
+
+    if resultado :
+        for r in resultado.split(","):
+            if len(r)>0:
+                list_categorias.append(Categoria.objects.get(idCategoria=r))
     cursor.close()
     
     return list_categorias

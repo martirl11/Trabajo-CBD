@@ -27,6 +27,10 @@ urlpatterns = [
     #pasamos el parametro <int:pag> para la paginacion
     path('mejores_peliculas/<int:pag>',cinema_views.mostrar_mejores_peliculas),
     path('busqueda_peliculas/',cinema_views.mostrar_peliculas_year),
+    path('pelicula/list',cinema_views.pelicula_list),
+    path('pelicula/<int:pelicula_id>/details', cinema_views.pelicula_details),    
+    path('categoria/list',cinema_views.categoria_list),
+    path('categoria/<int:categoria_id>/details', cinema_views.categoria_details), 
     path('populate/', cinema_views.populateDatabase),
     path('ingresar/', cinema_views.ingresar),    
     path('cargarsr/',cinema_views.cargarSR),

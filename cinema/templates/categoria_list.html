@@ -1,0 +1,25 @@
+{% extends "master.html" %}
+{% load static %}
+
+
+{% block extrahead %} 
+<link rel="stylesheet" type="text/css" href="{% static 'styles/users.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static 'styles/details.css' %}"> 
+
+{% endblock %}
+
+
+{% block contenido %}
+
+<div class='container'>
+    <h5 class="bg-warning rounded-pill text-center">Categorias</h5> 
+    {% for row in objects %}
+    <div class="row rounded border border-dark mb-3 py-2">
+        <h5><strong>{{row.nombre}}</strong></h5>
+        <div id="id-update-div-{{row.idCategoria}}" class="col-6 px-2 text-center">
+            <a href="/categoria/{{row.idCategoria}}/details"><i class="bi bi-info-circle"></i>Detalles</a>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock%}

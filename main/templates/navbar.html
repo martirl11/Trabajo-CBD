@@ -11,7 +11,7 @@
         <ul class="navbar-nav d-flex justify-content-between w-100">
             
             <li class="nav-item">
-                <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="/">Inicio</a>
+                <a class="nav-link" aria-current="page" href="/">Inicio</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle {% if 'user' in request.path %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,6 +28,8 @@
                   Peliculas
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/pelicula/list">Todas</a></li>
+                    <li><a class="dropdown-item" href="/categoria/list">Categorias</a></li>
                     <li><a class="dropdown-item" href="/busqueda_peliculas">Busqueda</a></li>
                     <li><a class="dropdown-item" href="/mejores_peliculas/1">Mejores</a></li>
                 </ul>

@@ -1,8 +1,9 @@
 #encoding:utf-8
-from .models import Usuario, Puntuacion, Pelicula
+from .models import Usuario, Puntuacion, Pelicula, Categoria
+from chic.models import Item
 from .populateDB import populate
 from .forms import  UsuarioBusquedaForm, PeliculaBusquedaYearForm
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.db.models import Avg, Count
 from django.http.response import HttpResponseRedirect
 from django.conf import settings
@@ -176,3 +177,88 @@ def recomendar2peliculasD(request):
             }) 
 
         
+def pelicula_list(request):
+    objects = Pelicula.objects.all()
+    title = "Peliculas"
+
+    context = {
+        'objects': objects,
+        'title': title,
+        "item":"pelicula",
+        
+    }
+    return render(request, 'pelicula_list.html', context)
+
+def pelicula_details(request, pelicula_id):
+    object = get_object_or_404(Pelicula, idPelicula= pelicula_id)
+    context = {
+        'object': object, 
+        'title': object.titulo,
+        'categorias':object.categorias.all(),
+        'merchan': obtener_merchan_peliculas(object.idPelicula),
+        
+        }
+
+    return render(request, 'details.html', context)
+
+def categoria_list(request):
+    objects = Categoria.objects.all()
+    title = "Categorias"
+
+    context = {
+        'objects': objects,
+        'title': title,
+        "item":"categoria",
+        
+    }
+    return render(request, 'categoria_list.html', context)
+
+def categoria_details(request, categoria_id):
+    object = get_object_or_404(Categoria, idCategoria= categoria_id)
+    peliculas=[] 
+    peliculas.append(Pelicula.objects.filter(categorias__idCategoria = object.idCategoria ).distinct())
+    print (str(peliculas))
+    context = {
+        'object': object, 
+        'title': object.nombre,
+        'pelis': peliculas[0],
+        'merchan': obtener_merchan_categorias(object.idCategoria),
+        
+        } 
+
+    return render(request, 'categoria_details.html', context)
+
+import cx_Oracle
+
+dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl.home')
+connection = cx_Oracle.connect(user="root_cbd", password="trabaj0CBD", dsn=dsn_tns)
+  
+   
+def obtener_merchan_peliculas(idPeli):
+    cursor = connection.cursor()
+    
+    resultado = cursor.callfunc("QUE_MERCHAN_PELICULA", cx_Oracle.STRING, [idPeli])
+    
+    lista = []
+    if resultado :
+        for r in resultado.split(","):
+            print(r)
+            if len(r)>0:
+                lista.append(Item.objects.get(id=r))
+    cursor.close()
+    
+    return lista
+
+def obtener_merchan_categorias(idcateg):
+    cursor = connection.cursor()
+    
+    resultado = cursor.callfunc("QUE_MERCHAN_CATEGORIA", cx_Oracle.STRING, [idcateg])
+    
+    lista = []
+    if resultado :
+        for r in resultado.split(","):
+            if len(r)>0:
+                lista.append(Item.objects.get(id=r))
+    cursor.close()
+    
+    return lista

@@ -22,25 +22,29 @@
             </div>
         </div>
         <div class="row justify-content-between align-items-center">
-            <div class="col-12">
+            <div class="col-4">
                 <div class="row justify-content-start align-items-center">
                 
-                    <div class="d-flex justify-content-md-start justify-content-center col-md-3 col-12 py-3">
-                        <img style="width: 150px; height: 150px; object-fit: cover; border-radius: 30px;" alt="{{ item.imagen }}" src="{% if item.imagen %}  ../../{{item.imagen }}{% else %}{% static 'img/person-icon.svg' %}{% endif %}" />
+                    <div class="d-flex justify-content-md-start justify-content-center col-md-6 col-12 py-3">
+                        <img id="cinema_photo" style="width: 250px; height: 400px; object-fit: cover; border-radius: 30px;" alt="{{ item.imagen }}" src="/static/images_cinema/{{ title }}/Image_1.jpg" />
+
                     </div>
 
-                <div class="col-md-9 col-12 py-3">
-                    
-                    
-
+                </div>
             </div>
 
-        
-        </div>
-    
-    
+            <div style=""class="col-6 ">
+                <div class='row rounded border border-dark p-3' >
+                    <div class="row"><h3>Título</h3><p>{{title}}</p></div>
+                    <div class="row"><h3>Fecha de Estreno</h3><p>{{object.fechaEstreno}}</p></div>
+                    <div class="row"><h3>Valoración en Imdb</h3><p><a href="{{ object.imdbUrl }}">{{object.imdbUrl}}</a></p></div>
+                </div>
+            </div>
+            <div class="col-2"></div>
 
-    </div>
+            
+        </div>
+    </div>    
     
     <div class='container'>
         <h5 class="bg-warning rounded-pill text-center">Categorias</h5> 
@@ -77,3 +81,9 @@
     </div>
 </div>
 {% endblock %}
+
+<script type="text/javascript">
+
+document.getElementById('cinema_photo').src = "a";
+    
+    </script>

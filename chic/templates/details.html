@@ -23,13 +23,36 @@
         </div>
         <div class="row justify-content-between align-items-center">
             <div class="col-12">
-                <div class="row justify-content-start align-items-center">
-                
-                    <div class="d-flex justify-content-md-start justify-content-center col-md-3 col-12 py-3">
-                        <img style="width: 150px; height: 150px; object-fit: cover; border-radius: 30px;" alt="{{ item.imagen }}" src="{% if item.imagen %}  ../../{{item.imagen }}{% else %}{% static 'img/person-icon.svg' %}{% endif %}" />
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-4">
+                        <div class="row justify-content-start align-items-center">
+                        
+                            <div class="d-flex justify-content-md-start justify-content-center col-md-6 col-12 py-3">
+                                <img id="cinema_photo" style="width: 250px; height: 400px; object-fit: cover; border-radius: 30px;" alt="{{ object.imagen }}" src="{% if object.imagen %}  ../../{{object.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}"/>
+        
+                            </div>
+        
+                        </div>
                     </div>
+        
+                    <div style=""class="col-6 ">
+                        <div class='row rounded border border-dark p-3' >
+                            <div class="row"><h3>Nombre</h3><p>{{object.nombre}}</p></div>
+                            <div class="row"><h3>Descripcion</h3><p>{{object.descripcion}}</p></div>
+                            <div class="row"><h3>Precio</h3><p>{{object.precio}} €</p></div>
+                            {%if item=Ropa %}
+                            <div class="row"><h3>Talla</h3><p>{{object.talla}} €</p></div>
+                            <div class="row"><h3>Marca</h3><p>{{object.marca}} €</p></div>
+                            <div class="row"><h3>Colo</h3><p>{{object.color}} €</p></div>
+                            <div class="row"><h3>Tipo</h3><p>{{object.tipoRopa}} €</p></div>
 
-                <div class="col-md-9 col-12 py-3">
+                            {%endif%}
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+        
+                    
+                </div>
                     
                     
 

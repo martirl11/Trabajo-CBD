@@ -36,7 +36,7 @@ def mostrar_mejores_peliculas(request,pag):
         if pag < 1:
             pag = 1
     #peliculas con más de 100 puntuaciones
-    peliculas = Pelicula.objects.annotate(avg_rating=Avg('puntuacion__puntuacion'),num_rating=Count('puntuacion__puntuacion')).filter(num_rating__gt=100).order_by('-avg_rating')[(pag-1)*10:pag*10]
+    peliculas = Pelicula.objects.annotate(avg_rating=Avg('puntuacion__puntuacion'),num_rating=Count('puntuacion__puntuacion')).filter(num_rating__gt=8).order_by('-avg_rating')[(pag-1)*10:pag*10]
     return render(request, 'mejores_peliculas.html', {'peliculas':peliculas, 'pagina':pag, 'STATIC_URL':settings.STATIC_URL})
 
 def mostrar_peliculas_year(request):

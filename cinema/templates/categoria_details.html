@@ -43,14 +43,27 @@
     </div>
     
     <div class='container'>
-        <h5 class="bg-warning rounded-pill text-center">Peliculas</h5> 
-        {% for row in pelis %}
-        <div class="row rounded border border-dark mb-3 py-2">
-            <h5><strong>{{row.titulo}}</strong></h5>
+        <h5 class="bg-warning rounded-pill text-center">Peliculas</h5>
+        <div class=" overflow-auto border border-2 justify-content-around align-content-around" style="height: 150px;"> 
+            {% for row in pelis %}
+                <div class='rounded border border-dark mb-3 py-2 row' style='width:80%'>
+                    <div class='col-6 alig-items-center'>
+                        <h5><strong>{{row.titulo}}</strong></h5>
+
+                    </div>
+                    <div class='col-6 align-items-center' >
+                        <a href="/pelicula/{{row.idPelicula}}/details" style='text-decoration:none; color:white'>
+                            <button class='btn btn-dark'   type="button"  >
+                            <i class="bi bi-info-circle"></i>Detalles
+                            </button>
+                        </a>
+                                                    
+                    </div>
             
+                </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-        
+
         <h5 class="bg-warning rounded-pill text-center">Merchandising</h5> 
         {% for row in merchan %}
         <div class="row rounded border border-dark mb-3 py-2">

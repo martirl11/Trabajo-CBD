@@ -199,7 +199,7 @@ def pelicula_details(request, pelicula_id):
         
         }
 
-    return render(request, 'details.html', context)
+    return render(request, 'pelicula_details.html', context)
 
 def categoria_list(request):
     objects = Categoria.objects.all()

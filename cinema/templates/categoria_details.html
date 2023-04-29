@@ -44,33 +44,55 @@
     
     <div class='container'>
         <h5 class="bg-warning rounded-pill text-center">Peliculas</h5>
-        <div class=" overflow-auto border border-2 justify-content-around align-content-around" style="height: 150px;"> 
+        <div class="rounded overflow-auto border border-2 container" style="height: 150px;"> 
             {% for row in pelis %}
-                <div class='rounded border border-dark mb-3 py-2 row' style='width:80%'>
-                    <div class='col-6 alig-items-center'>
-                        <h5><strong>{{row.titulo}}</strong></h5>
+                <div class=' row justify-content-center' >
+                    <div class='rounded border border-dark mb-3 py-2 col-12' style='width:80%'>
+                        <div class='row'>
+                            <div class='col-9 alig-items-center'>
+                                <h5><strong>{{row.titulo}}</strong></h5>
 
+                            </div>
+                            <div class='col-2 alig-items-center' >
+                                <a href="/pelicula/{{row.idPelicula}}/details" style='text-decoration:none; color:white'>
+                                    <button class='btn btn-dark'   type="button"  >
+                                    <i class="bi bi-info-circle"></i>Detalles
+                                    </button>
+                                </a>
+                                                            
+                            </div>
+                        </div>
                     </div>
-                    <div class='col-6 align-items-center' >
-                        <a href="/pelicula/{{row.idPelicula}}/details" style='text-decoration:none; color:white'>
-                            <button class='btn btn-dark'   type="button"  >
-                            <i class="bi bi-info-circle"></i>Detalles
-                            </button>
-                        </a>
-                                                    
-                    </div>
-            
                 </div>
             {% endfor %}
         </div>
 
         <h5 class="bg-warning rounded-pill text-center">Merchandising</h5> 
-        {% for row in merchan %}
-        <div class="row rounded border border-dark mb-3 py-2">
-            <h5><strong>{{row.nombre}}</strong></h5>
+        <div class="rounded d-flex flex-wrap overflow-auto border border-2 justify-content-around align-content-around" style="height: 150px;">
+            {% for row in merchandising%}
             
+                <div class='rounded border border-dark mb-3 py-2 row' style='width:400px !important ; margin-top:20px;' >
+                    <div class="card-img-col col-4">
+               
+                        <img src="{% if item.imagen %}  ../../{{item.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}" class="card-img-top" alt="{{item.nombre}}">
+                    </div>
+                    <div class='col-4 alig-items-center'>
+                        <h5><strong>{{row.nombre}}</strong></h5>
+                        <h7>Precio: {{row.precio}} €</h7>
+
+                    </div>
+                    <div class='col-4 align-items-center' >
+                        <a href="/item/{{row.id}}/details" style='text-decoration:none; color:white'>
+                            <button class='btn btn-dark'   type="button"  >
+                               <i class="bi bi-info-circle"></i>Detalles
+                            </button>
+                        </a>
+                                                    
+                    </div>
+              
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
         
     </div>
 </div>

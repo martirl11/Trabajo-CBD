@@ -52,8 +52,8 @@ urlpatterns = [
     path('taza/<int:item_id>/update',chic_views.taza_update),
     path('poster/<int:item_id>/update',chic_views.poster_update),
     path('accesorio/<int:item_id>/update',chic_views.accesorio_update),
-    path('ropa/<int:item_id>/details',chic_views.ropa_details),
-    path('taza/<int:item_id>/details',chic_views.taza_details),
-    path('poster/<int:item_id>/details',chic_views.poster_details),
-    path('accesorio/<int:item_id>/details',chic_views.accesorio_details),
+    path('item/<int:item_id>/details',chic_views.ropa_details),
+    path('item/<int:item_id>/details',chic_views.taza_details),
+    path('item/<int:item_id>/details',chic_views.poster_details),
+    path('item/<int:item_id>/details',chic_views.accesorio_details),
 ]

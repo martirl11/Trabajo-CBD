@@ -195,7 +195,7 @@ def pelicula_details(request, pelicula_id):
         'object': object, 
         'title': object.titulo,
         'categorias':object.categorias.all(),
-        'merchan': obtener_merchan_peliculas(object.idPelicula),
+        'merchandising': obtener_merchan_peliculas(object.idPelicula),
         
         }
 
@@ -222,7 +222,7 @@ def categoria_details(request, categoria_id):
         'object': object, 
         'title': object.nombre,
         'pelis': peliculas[0],
-        'merchan': obtener_merchan_categorias(object.idCategoria),
+        'merchandising': obtener_merchan_categorias(object.idCategoria),
         
         } 
 

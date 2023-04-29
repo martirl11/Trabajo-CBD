@@ -47,20 +47,49 @@
     </div>
     <div class='container'>
         <h5 class="bg-warning rounded-pill text-center">Peliculas</h5> 
-        {% for row in peliculas %}
-        <div class="row rounded border border-dark mb-3 py-2">
-            <h5><strong>{{row.titulo}}</strong></h5>
-            <div class="col-12">Punutaci&oacute;n media: {{row.avg_rating | floatformat:"2"}}/5</div>
-            <div class="col-12">N&uacute;mero puntuaciones: {{row.num_rating}}</div>
+        <div class="rounded overflow-auto border border-2 container" style="height: 150px;"> 
+            {% for row in peliculas %}
+            <div class=' row justify-content-center' >
+                <div class='rounded border border-dark mb-3 py-2 col-12' style='width:80%'>
+                    <div class='row'>
+                        <div class='col-9 alig-items-center'>
+                            <h5><strong>{{row.titulo}}</strong></h5>
+
+                        </div>
+                        <div class='col-2 alig-items-center' >
+                            <a href="/pelicula/{{row.idPelicula}}/details" style='text-decoration:none; color:white'>
+                                <button class='btn btn-dark'   type="button"  >
+                                <i class="bi bi-info-circle"></i>Detalles
+                                </button>
+                            </a>
+                                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
         <h5 class="bg-warning rounded-pill text-center">Categorias</h5> 
-        {% for row in categorias %}
-        <div class="row rounded border border-dark mb-3 py-2">
-            <h5><strong>{{row.nombre}}</strong></h5>
+        <div class=" rounded d-flex flex-wrap overflow-auto border border-2 justify-content-around align-content-around" style="height: 150px;">
+            {% for row in categorias%}
             
+                <div class='rounded border border-dark mb-3 py-2 row' >
+                    <div class='col-6 alig-items-center'>
+                        <h5><strong>{{row.nombre}}</strong></h5>
+
+                    </div>
+                    <div class='col-6 align-items-center' >
+                        <a href="/categoria/{{row.idCategoria}}/details" style='text-decoration:none; color:white'>
+                            <button class='btn btn-dark'   type="button"  >
+                               <i class="bi bi-info-circle"></i>Detalles
+                            </button>
+                        </a>
+                                                    
+                    </div>
+              
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

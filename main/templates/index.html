@@ -1,10 +1,56 @@
 {% extends 'master.html' %}
 
-{% block titulo %} Página inicial {% endblock %}
+
+
+{% block extrahead %} 
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}"> 
+{% endblock %}
 
 {% block contenido %} 
-		<hr>
-		<h5>Esta es la página de inicio</h5>   
-		<hr>
+<div class="container">
+	<h1 class="mt-5">Bienvenido a CinemaChic </h1>
+	<section class="showcase">
+		<div class="container-fluid p-0">
+			<div class="row g-0">
+				<div class="col-lg-6 order-lg-2 text-white showcase-img" >
+					<img style="width: 500px; height: 250px;" class="m-5" src="{% static 'img/cine_img.jpg' %}" alt="Descripción de la imagen">
+				  </div>
+				<div class="col-lg-6 order-lg-1 my-auto showcase-text">
+					<p class="lead mb-0" style="text-align: justify;"> CinemaChic es una aplicación web que fusiona los sectores del cine y el merchandising, permitiendo conectar empresas independientes en un marco común. Desde esta aplicación, podrás buscar tu película favorita y, al acceder, te mostrará todo el merchandising disponible, aunque este sea de una empresa independiente. Además, te permitirá buscar datos de la película a la que corresponde un artículo, como su año de lanzamiento o la puntuación según los usuarios de dicho cine.</p>
+				</div>
+				
+				
+			</div>
+		</div>
+	</section>
 
+	<section class="showcase ">
+		<div class="row g-0">
+			<div class="col-lg-6 text-white showcase-img d-flex justify-content-center align-items-center"><img width="80%" src='{% static 'img/merchandising.jpg' %}'> </div>
+			<div class="col-lg-6 my-auto showcase-text">
+				<h1>Justificación</h1>
+				<p class="lead mb-0 " style="text-align: justify;">Este proyecto nace de la idea de aprender el funcionamiento de las Database Link de Oracle, ya que su aprendizaje abriría un gran sector en el ámbito empresarial. Además, se ha impuesto el reto de combinar el framework de Django (framework tratado en ciertas asignaturas) con una nueva tecnología, permitiendo la obtención de nuevas habilidades a nivel tecnológico (Oracle Database Link), y a nivel intrapersonal. </p>
+			</div>
+		</div>
+		</section>
+
+		<section class="testimonials text-center mt-5 mb-5 bg-light">
+            <div class="container">
+                <h1 class="mb-4">Contacta con Nosotros</h1>
+                <div class="row text-start">
+					<div class="col-12">
+                    	<b>Repositorio de Github:  </b><a href="https://github.com/martirl11/Trabajo-CBD">https://github.com/martirl11/Trabajo-CBD</a><br/>
+					</div>
+					<div class="col-12">
+						<b>Correo Jaime Borrego Conde:  </b>jaiborcon@alum.us.es<br/>
+					</div>
+					<div class="col-12">
+						<b>Correo Marta reyes López:  </b>marreylop4@alum.us.es<br/>
+					</div>
+                    
+                </div>
+            </div>
+        </section>
+</div>
 {% endblock %}

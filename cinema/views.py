@@ -16,6 +16,8 @@ from bing_image_downloader import downloader
 
 from .recommendations import *
 
+from django.core.paginator import Paginator
+
 #Funcion de acceso restringido que carga los datos en la BD  
 @login_required(login_url='/ingresar')
 def populateDatabase(request):
@@ -182,8 +184,11 @@ def pelicula_list(request):
     objects = Pelicula.objects.all()
     title = "Peliculas"
 
+    paginator=Paginator(objects,5)
+    page_number=request.GET.get('page')
+    page_obj=paginator.get_page(page_number)
     context = {
-        'objects': objects,
+        'objects': page_obj,
         'title': title,
         "item":"pelicula",
         
@@ -234,7 +239,7 @@ def categoria_details(request, categoria_id):
 
 import cx_Oracle
 
-dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl.home')
+dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl')
 connection = cx_Oracle.connect(user="root_cbd", password="trabaj0CBD", dsn=dsn_tns)
   
    

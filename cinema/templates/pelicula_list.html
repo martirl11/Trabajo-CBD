@@ -13,9 +13,10 @@
 
 <div class='container'>
     <h2 class="bg-warning rounded-pill text-center">Peliculas</h2>
-    <div class="rounded  row overflow-auto border border-2 justify-content-center" style="height: 800px;">
+    <div class="rounded  row  border border-2 justify-content-center" style="height: 800px;">
+        {% include 'pagination.html' %}
     {% for row in objects %}
-    <div class="row rounded border border-dark mb-3 py-2" style='width:90%; '>
+    <div class="row rounded border border-dark mb-3  mt-3 py-2" style='width:90%; '>
         <div class='col-10'>
             <h5><strong>{{row.titulo}}</strong></h5>
             <span>{{row.fechaEstreno}} | <a target="_blank" href="{{row.imdbUrl}}" class="link-primary">{{row.imdbUrl}}</a></span>
@@ -30,11 +31,13 @@
         </div>
         <div class='col-2 align-items-center' style='position:relative;'>
             <button class='btn btn-dark'   type="button" style='margin:0 auto; position:absolute; top:35%' >
-                <a href="/pelicula/{{row.idPelicula}}/details" style='text-decoration:none; color:white'><i class="bi bi-info-circle"></i>Detalles</a>
+                <a href="/pelicula/{{row.idPelicula}}/details" style='text-decoration:none; color:white'><i class="bi bi-info-circle"></i> Detalles</a>
             </button>
                                            
         </div>
     </div>
     {% endfor %}
+
+    {% include 'pagination.html' %}
 
 {% endblock%}

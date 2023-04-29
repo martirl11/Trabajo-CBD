@@ -16,20 +16,38 @@
     <div id="section-user" class="p-2">
         <div class="row">
             <div class="col align-self-end">
-                <a href="/{{ item }}/list" >
-                    <button class='btn btn-dark'   type="button" style='width:20%'>Volver al Listado</button></a>
+                <a href="/{{ item|lower }}/list" >
+                    <button class='btn btn-dark' type="button" style='width:20%'>Volver al Listado</button></a>
             
             </div>
         </div>
         <div class="row justify-content-between align-items-center">
             <div class="col-12">
                 <div class="row justify-content-between align-items-center">
-                    <div class="col-4">
+                    <div class="col-5">
                         <div class="row justify-content-start align-items-center">
                         
                             <div class="d-flex justify-content-md-start justify-content-center col-md-6 col-12 py-3">
-                                <img id="cinema_photo" style="width: 250px; height: 400px; object-fit: cover; border-radius: 30px;" alt="{{ object.imagen }}" src="{% if object.imagen %}  ../../{{object.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}"/>
+                                <img id="cinema_photo" style="width: 350px; height: 500px; object-fit: cover; border-radius: 30px;" alt="{{ object.imagen }}" src="{% if object.imagen %}  ../../{{object.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}"/>
         
+                            </div>
+
+                            <div class="links row">
+                                <div class='col-6 alig-items-center' >
+                                    <a href="/{{item|lower}}/{{object.id}}/update" style='text-decoration:none; color:white'>
+                                        <button class='btn btn-dark'   type="button"  >
+                                        <i class="bi bi-pencil"></i> Editar
+                                        </button>
+                                    </a>                              
+                                </div>
+
+                                <div class='col-6 alig-items-center' >
+                                    <a href="/{{item|lower}}/{{object.id}}/delete" style='text-decoration:none; color:white'>
+                                        <button class='btn btn-dark'   type="button"  >
+                                            <i class="bi bi-trash"></i> Eliminar
+                                        </button>
+                                    </a>                              
+                                </div>
                             </div>
         
                         </div>
@@ -69,7 +87,7 @@
                             {%endif%}
                         </div>
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
         
                     
                 </div>
@@ -84,10 +102,7 @@
     
 
     </div>
-    <div class="links">
-        <a href="/{{item}}/{{object.id}}/update"><i class="bi bi-pencil"></i> Editar</a>
-        <a href="/{{item}}/{{object.id}}/delete"><i class="bi bi-trash"></i> Eliminar</a>
-    </div>
+
     <div class='container'>
         <h5 class="bg-warning rounded-pill text-center">Peliculas</h5> 
         <div class="rounded overflow-auto border border-2 container" style="height: 150px;"> 

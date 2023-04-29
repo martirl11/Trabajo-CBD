@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 import cx_Oracle
-dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl.home')
+dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl')
 connection = cx_Oracle.connect(user="root_cbd_2", password="trabaj0CBD", dsn=dsn_tns)
 
 
@@ -118,7 +118,7 @@ def taza_list(request):
     return render(request, 'list.html', context)
 
 def poster_list(request):
-    objects = Taza.objects.all()
+    objects = Poster.objects.all()
     title = "Poster"
 
     context = {
@@ -130,7 +130,7 @@ def poster_list(request):
     return render(request, 'list.html', context)
 
 def accesorio_list(request):
-    objects = Taza.objects.all()
+    objects = Accesorio.objects.all()
     title = "Accesorios"
 
     context = {
@@ -172,7 +172,7 @@ def accesorio_update(request, item_id):
     accesorio = get_object_or_404(Accesorio, id= item_id)
     if request.method == 'POST':
         form = CreateAccesorioForm(
-            request.POST, instance=accesorio)
+            request.POST, request.FILES, instance=accesorio)
         if form.is_valid():
             form.save()
             return redirect('accesorio_list')
@@ -194,7 +194,7 @@ def ropa_update(request, item_id):
     ropa = get_object_or_404(Ropa, id= item_id)
     if request.method == 'POST':
         form = CreateRopaForm(
-            request.POST, instance=ropa)
+            request.POST, request.FILES, instance=ropa)
         if form.is_valid():
             form.save()
             return redirect('ropa_list')
@@ -217,7 +217,7 @@ def taza_update(request, item_id):
     taza = get_object_or_404(Taza, id= item_id)
     if request.method == 'POST':
         form = CreateTazaForm(
-            request.POST, instance=taza)
+            request.POST, request.FILES, instance=taza)
         if form.is_valid():
             form.save()
             return redirect('taza_list')
@@ -239,7 +239,7 @@ def poster_update(request, item_id):
     poster = get_object_or_404(Poster, id= item_id)
     if request.method == 'POST':
         form = CreatePosterForm(
-            request.POST, instance=poster)
+            request.POST, request.FILES, instance=poster)
         if form.is_valid():
             form.save()
             return redirect('poster_list')

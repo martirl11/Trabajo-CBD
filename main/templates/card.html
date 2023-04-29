@@ -14,7 +14,7 @@ ATTRIBUTES
         <div class="row g-0">
             <div class="card-img-col col-12">
                
-                <img src="{% if item.imagen %}  ../../{{item.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}" class="card-img-top" alt="{{item.nombre}}">
+                <img style="width: 350px; height: 300px; object-fit: cover;" src="{% if item.imagen %}  ../../{{item.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}" class="card-img-top" alt="{{item.nombre}}">
             </div>
             <div class="card-body-col col-12 text-center">
                 <div class="card-body row h-100">
@@ -33,18 +33,32 @@ ATTRIBUTES
                     </div>
                     {% endif %}
                     <hr class="mb-0">
-                    <div class="col-12 pt-3">
-                        <div id="id-div-footer-btn" class="row h-100 align-items-end">
-                            <div id="id-update-div-{{item.id}}" class="col-6 px-2 text-center">
-                                <a href="/item/{{item.id}}/details"><i class="bi bi-info-circle"></i>Detalles</a>
+                    <div class="row pt-3">
+
+                            <div id="id-update-div-{{item.id}}" class="col-4 px-2 text-center" >
+                                <a href="/item/{{item.id}}/details" style='text-decoration:none; color:white'>
+                                    <button class='btn btn-dark'  type="button">
+                                    <i class="bi bi-info-circle"></i> Detalles
+                                    </button>
+                                </a>                              
                             </div>
-                            <div id="id-update-div-{{item.id}}" class="col-6 px-2 text-center">
-                                <a id="id-update-{{item.id}}" href="/{{merchan}}/{{item.id}}/update"><i class="bi me-2 bi-pencil-square"></i>Editar</a>
+                        
+                            <div id="id-update-div-{{item.id}}" class="col-4 px-2 text-center" >
+                                <a id="id-update-{{item.id}}" href="/{{merchan}}/{{item.id}}/update" style='text-decoration:none; color:white'>
+                                    <button class='btn btn-dark'  type="button">
+                                        <i class="bi me-2 bi-pencil-square"></i> Editar
+                                    </button>
+                                </a>                              
                             </div>
-                            <div id="id-delete-div-{{item.id}}" class="col-6 px-2 text-center">
-                                <a id="id-delete-{{item.id}}" href="/{{merchan}}/{{item.id}}/delete"><i class="bi me-2 bi-trash3"></i>Eliminar</a>
+                            <div id="id-delete-div-{{item.id}}" class="col-4 px-2 text-center" >
+                                <a id="id-delete-{{item.id}}" href="/{{merchan}}/{{item.id}}/delete" style='text-decoration:none; color:white'>
+                                    <button class='btn btn-dark'  type="button">
+                                        <i class="bi me-2 bi-trash3"></i> Borrar
+                                    </button>
+                                </a>                              
                             </div>
-                        </div>
+                        
+                        
                     </div>
                 </div>
             </div>

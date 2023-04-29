@@ -40,11 +40,31 @@
                             <div class="row"><h3>Nombre</h3><p>{{object.nombre}}</p></div>
                             <div class="row"><h3>Descripcion</h3><p>{{object.descripcion}}</p></div>
                             <div class="row"><h3>Precio</h3><p>{{object.precio}} €</p></div>
-                            {%if item=Ropa %}
-                            <div class="row"><h3>Talla</h3><p>{{object.talla}} €</p></div>
-                            <div class="row"><h3>Marca</h3><p>{{object.marca}} €</p></div>
-                            <div class="row"><h3>Colo</h3><p>{{object.color}} €</p></div>
-                            <div class="row"><h3>Tipo</h3><p>{{object.tipoRopa}} €</p></div>
+                            {%if item == 'Ropa' %}
+                            <div class="row" ><h3>Talla</h3><p>{{object.talla}} </p></div>
+                            <div class="row"><h3>Marca</h3><p>{{object.marca}} </p></div>
+                            <div class="row"><h3>Color</h3><p>{{object.color}} </p></div>
+                            <div class="row"><h3>Tipo</h3><p>{{object.tipoRopa}} </p></div>
+
+                            {%endif%}
+                            {%if item == 'Poster' %}
+                            <div class="row"><h3>Artista</h3><p>{{object.artista}} </p></div>
+                            <div class="row"><h3>Tama&ntildeo</h3><p>{{object.tamaño}} </p></div>
+                            <div class="row"><h3>Tipo</h3><p>{{object.tipo}} </p></div>
+
+                            {%endif%}
+                            {%if item == 'Taza' %}
+                            <div class="row"><h3>Color</h3><p>{{object.color}} </p></div>
+                            <div class="row"><h3>Capacidad</h3><p>{{object.capacidad}} </p></div>
+                            <div class="row"><h3>Material</h3><p>{{object.material}} </p></div>
+                            <div class="row"><h3>Artista</h3><p>{{object.artista}} </p></div>
+
+                            {%endif%}
+                            {%if item == 'Accesorio' %}
+                            <div class="row"><h3>Color</h3><p>{{object.color}} </p></div>
+                            <div class="row"><h3>Tama&ntildeo</h3><p>{{object.tamaño}} </p></div>
+                            <div class="row"><h3>Material</h3><p>{{object.material}} </p></div>
+                            <div class="row"><h3>Artista</h3><p>{{object.artista}} </p></div>
 
                             {%endif%}
                         </div>

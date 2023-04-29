@@ -157,3 +157,8 @@ delete_migrations.bat
 
 #Worker images
 static/img/worker/*
+
+#Entorno virtual
+CBDenv/*
+
+static/images_cinema/*

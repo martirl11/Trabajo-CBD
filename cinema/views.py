@@ -12,6 +12,7 @@ from .forms import CustomAuthenticationForm
 
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from bing_image_downloader import downloader
 
 from .recommendations import *
 
@@ -191,6 +192,9 @@ def pelicula_list(request):
 
 def pelicula_details(request, pelicula_id):
     object = get_object_or_404(Pelicula, idPelicula= pelicula_id)
+    downloader.download(object.titulo, limit=1,  output_dir='static/images_cinema', 
+                    adult_filter_off=True, force_replace=False, timeout=60)
+    
     context = {
         'object': object, 
         'title': object.titulo,
@@ -230,7 +234,7 @@ def categoria_details(request, categoria_id):
 
 import cx_Oracle
 
-dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl.home')
+dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl')
 connection = cx_Oracle.connect(user="root_cbd", password="trabaj0CBD", dsn=dsn_tns)
   
    

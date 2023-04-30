@@ -296,8 +296,9 @@ def obtener_item_type(iditem):
 
 def item_details(request, item_id):
     tipo = obtener_item_type(item_id)
+    print(tipo)
     if tipo == 'ropa':
-        item = get_object_or_404(Poster, id= item_id)
+        item = get_object_or_404(Ropa, id= item_id)
         titulo='Ropa'
         
     if tipo == 'accesorio':

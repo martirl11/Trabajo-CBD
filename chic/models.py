@@ -42,7 +42,7 @@ class Item (models.Model):
 
 
 class Ropa (Item):
-    talla = models.CharField(max_length=3, verbose_name="Talla")
+    talla = models.CharField(max_length=100, verbose_name="Talla")
     marca= models.CharField(max_length=100, verbose_name="Marca")
     color = models.CharField(max_length=20, verbose_name="Color")
     tipoRopa = models.CharField(max_length=50,choices=TIPO_ROPA, verbose_name="Tipo de ropa")

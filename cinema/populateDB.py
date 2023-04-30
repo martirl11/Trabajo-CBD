@@ -1,5 +1,6 @@
 #encoding:utf-8
 from .models import Usuario, Ocupacion, Puntuacion, Pelicula, Categoria
+from chic.models import *
 from datetime import datetime
 
 path = "data"
@@ -9,8 +10,13 @@ def populate():
     g=populateGenres()
     (u, us)=populateUsers()
     (m, mo)=populateMovies()
-    p=populateRatings(u,m)  #USAMOS LOS DICCIONARIOS DE USUARIOS Y PELICULAS PARA ACELERAR LA CARGA EN PUNTUACIONES
-    return (o,g,us,mo,p)
+    p=populateRatings(u,m)
+    #t=populateTaza()
+    r=populateRopa()
+    #po=populatePoster()
+    #a=populateAccesorio()#USAMOS LOS DICCIONARIOS DE USUARIOS Y PELICULAS PARA ACELERAR LA CARGA EN PUNTUACIONES
+    me=populateItem()
+    return (o,g,us,mo,p,me,r)
 
 def populateOccupations():
     Ocupacion.objects.all().delete()
@@ -100,6 +106,80 @@ def populateRatings(u,m):
 
     return Puntuacion.objects.count()
 
+def populateRopa():
+    Ropa.objects.all().delete()
+    
+    lista=[]
+    fileobj=open(path+"\\u.ropa", "r")
+    for line in fileobj.readlines():
+        rip = str(line.strip()).split('|')
+        lista.append(Ropa(id=int(rip[0]),  talla=rip[1], marca=rip[2]
+                          , color=rip[3], tipoRopa=rip[4]))
+    fileobj.close()
+    Ropa.objects.bulk_create(lista)
+    
+    return Ropa.objects.count()
+
+
+def populatePoster():
+    Poster.objects.all().delete()
+    
+    lista=[]
+    fileobj=open(path+"\\u.poster", "r")
+    for line in fileobj.readlines():
+        rip = str(line.strip()).split('|')
+        lista.append(Poster(id=int(rip[1]), nombre=rip[0], descripcion=rip[2], precio=rip[3]
+                          , pelicula=rip[4], categoria=rip[5], artista=rip[6], tamaño=rip[7]
+                          , tipo=rip[8]))
+    fileobj.close()
+    Poster.objects.bulk_create(lista)
+    
+    return Poster.objects.count()
+
+def populateTaza():
+    Taza.objects.all().delete()
+    
+    lista=[]
+    fileobj=open(path+"\\u.taza", "r")
+    for line in fileobj.readlines():
+        rip = str(line.strip()).split('|')
+        lista.append(Taza(id=int(rip[1]), nombre=rip[0], descripcion=rip[2], precio=rip[3]
+                          , pelicula=rip[4], categoria=rip[5], color=rip[6], capacidad=rip[7]
+                          , material=rip[8], artista=rip[8]))
+    fileobj.close()
+    Taza.objects.bulk_create(lista)
+    
+    return Taza.objects.count()
+
+
+def populateAccesorio():
+    Accesorio.objects.all().delete()
+    
+    lista=[]
+    fileobj=open(path+"\\u.accesorio", "r")
+    for line in fileobj.readlines():
+        rip = str(line.strip()).split('|')
+        lista.append(Accesorio(id=int(rip[1]), nombre=rip[0], descripcion=rip[2], precio=rip[3]
+                          , pelicula=rip[4], categoria=rip[5], tamaño=rip[6], color=rip[7]
+                          , material=rip[8], artista=rip[8]))
+    fileobj.close()
+    Accesorio.objects.bulk_create(lista)
+    
+    return Accesorio.objects.count()
+
+def populateItem():
+    Item.objects.all().delete()
+    
+    lista=[]
+    fileobj=open(path+"\\u.merchan", "r")
+    for line in fileobj.readlines():
+        rip = str(line.strip()).split('|')
+        lista.append(Item(id=int(rip[1]), nombre=rip[0], descripcion=rip[2], precio=rip[3]
+                          , pelicula=rip[4], categoria=rip[5]))
+    fileobj.close()
+    Item.objects.bulk_create(lista)
+    
+    return Item.objects.count()
 
     
 

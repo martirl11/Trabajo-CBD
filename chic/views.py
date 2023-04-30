@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 import cx_Oracle
-dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl')
+dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl.home')
 connection = cx_Oracle.connect(user="root_cbd_2", password="trabaj0CBD", dsn=dsn_tns)
 
 
@@ -287,49 +287,34 @@ def obtener_categorias(categorias):
     
     return list_categorias
 
-def ropa_details(request, item_id):
-    item = get_object_or_404(Ropa, id= item_id)
-    context = {
-        'object': item, 
-        'title': item.nombre,
-        'item':'Ropa',
-        'peliculas': obtener_peliculas(item.pelicula),
-        'categorias' : obtener_categorias(item.categoria),
-        }
 
-    return render(request, 'details.html', context)
+def obtener_item_type(iditem):
+    cursor = connection.cursor()
+    resultado = cursor.callfunc("QUE_ITEM", cx_Oracle.STRING, [iditem])
+    cursor.close()
+    return resultado
 
-def accesorio_details(request, item_id):
-    item = get_object_or_404(Accesorio, id= item_id)
-    context = {
-        'object': item, 
-        'title': item.nombre,
-        'item':'Accesorio',
-        'peliculas': obtener_peliculas(item.pelicula),
-        'categorias' : obtener_categorias(item.categoria),
-        }
-
-    return render(request, 'details.html', context)
-
-def taza_details(request, item_id):
-    item = get_object_or_404(Taza, id= item_id)
-    context = {
-        'object': item, 
-        'title': item.nombre,
-        'item':'Taza',
-        'peliculas': obtener_peliculas(item.pelicula),
-        'categorias' : obtener_categorias(item.categoria),
-        }
-
-    return render(request, 'details.html', context)
-
-def poster_details(request, item_id):
-    item = get_object_or_404(Poster, id= item_id)
+def item_details(request, item_id):
+    tipo = obtener_item_type(item_id)
+    if tipo == 'ropa':
+        item = get_object_or_404(Poster, id= item_id)
+        titulo='Ropa'
+        
+    if tipo == 'accesorio':
+        item = get_object_or_404(Accesorio, id= item_id)
+        titulo='Accesorio'
+        
+    if tipo == 'poster':
+        item = get_object_or_404(Poster, id= item_id)
+        titulo='Poster'
     
+    if tipo == 'taza':
+        item = get_object_or_404(Taza, id= item_id)
+        titulo='Taza'
     context = {
         'object': item, 
         'title': item.nombre,
-        'item':'Poster',
+        'item':titulo,
         'peliculas': obtener_peliculas(item.pelicula),
         'categorias' : obtener_categorias(item.categoria),
         }

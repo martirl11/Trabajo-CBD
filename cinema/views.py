@@ -271,3 +271,4 @@ def obtener_merchan_categorias(idcateg):
     cursor.close()
     
     return lista
+    

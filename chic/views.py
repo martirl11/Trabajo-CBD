@@ -10,7 +10,7 @@ dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl.home')
 connection = cx_Oracle.connect(user="root_cbd_2", password="trabaj0CBD", dsn=dsn_tns)
 
 
-@login_required
+ 
 def ropa_create(request):
     form = CreateRopaForm()
     if request.method == 'POST':
@@ -32,7 +32,7 @@ def ropa_create(request):
 
     return render(request, 'create.html', context)
 
-@login_required
+ 
 def taza_create(request):
     form = CreateTazaForm()
     if request.method == 'POST':
@@ -52,7 +52,7 @@ def taza_create(request):
 
     return render(request, 'create.html', context)
 
-@login_required
+ 
 def poster_create(request):
     form = CreatePosterForm()
     if request.method == 'POST':
@@ -72,7 +72,7 @@ def poster_create(request):
 
     return render(request, 'create.html', context)
 
-@login_required
+ 
 def accesorio_create(request):
     form = CreateAccesorioForm()
     if request.method == 'POST':
@@ -141,25 +141,25 @@ def accesorio_list(request):
     }
     return render(request, 'list.html', context)
 
-@login_required
+ 
 def ropa_delete(request, item_id):
     ropa = get_object_or_404(Ropa, id= item_id)
     ropa.delete()
     return redirect('ropa_list')
 
-@login_required
+ 
 def taza_delete(request, item_id):
     taza = get_object_or_404(Taza, id= item_id)
     taza.delete()
     return redirect('taza_list')
 
-@login_required
+ 
 def poster_delete(request, item_id):
     poster = get_object_or_404(Poster, id= item_id)
     poster.delete()
     return redirect('poster_list')
 
-@login_required
+ 
 def accesorio_delete(request, item_id):
     accesorio = get_object_or_404(Accesorio, id= item_id)
     accesorio.delete()
@@ -167,7 +167,7 @@ def accesorio_delete(request, item_id):
 
 
 
-@login_required
+ 
 def accesorio_update(request, item_id):
     accesorio = get_object_or_404(Accesorio, id= item_id)
     if request.method == 'POST':
@@ -189,7 +189,7 @@ def accesorio_update(request, item_id):
 
     return render(request, 'create.html', context)
 
-@login_required
+ 
 def ropa_update(request, item_id):
     ropa = get_object_or_404(Ropa, id= item_id)
     if request.method == 'POST':
@@ -212,7 +212,7 @@ def ropa_update(request, item_id):
     return render(request, 'create.html', context)
 
 
-@login_required
+ 
 def taza_update(request, item_id):
     taza = get_object_or_404(Taza, id= item_id)
     if request.method == 'POST':
@@ -234,7 +234,7 @@ def taza_update(request, item_id):
 
     return render(request, 'create.html', context)
 
-@login_required
+ 
 def poster_update(request, item_id):
     poster = get_object_or_404(Poster, id= item_id)
     if request.method == 'POST':

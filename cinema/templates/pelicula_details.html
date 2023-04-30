@@ -69,10 +69,11 @@
             {% endfor %}
         </div>
         <h5 class="bg-warning rounded-pill text-center">Merchandising</h5> 
-        <div class="rounded d-flex flex-wrap overflow-auto border border-2 justify-content-around align-content-around" style="height: 150px;">
+        <div class="row rounded overflow-auto border border-2 justify-content-around " style="height: 300px; margin-bottom:20px">
+            
             {% for row in merchandising%}
             
-                <div class='rounded border border-dark mb-3 py-2 row' style='width:400px !important ; margin-top:20px;' >
+                <div class='rounded border border-dark mb-3 py-2 row' style='width:400px !important ; margin-top:30px;' >
                     <div class="card-img-col col-4">
                
                         <img src="{% if row.imagen %}  ../../{{row.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}" class="card-img-top" alt="{{item.nombre}}">
@@ -80,15 +81,15 @@
                     <div class='col-4 alig-items-center'>
                         <h5><strong>{{row.nombre}}</strong></h5>
                         <h7>Precio: {{row.precio}} €</h7>
-
+                        
                     </div>
-                    <div class='col-4 align-items-center' >
+                    <div class='col-4 alig-items-center'>
+                        
                         <a href="/item/{{row.id}}/details" style='text-decoration:none; color:white'>
                             <button class='btn btn-dark'   type="button"  >
                                <i class="bi bi-info-circle"></i> Detalles
                             </button>
                         </a>
-                                                    
                     </div>
               
             </div>

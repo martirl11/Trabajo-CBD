@@ -21,8 +21,8 @@ from django.core.paginator import Paginator
 #Funcion de acceso restringido que carga los datos en la BD  
 @login_required(login_url='/ingresar')
 def populateDatabase(request):
-    (o,g,u,m,p, me, r)=populate()
-    mensaje = 'Se han cargado: ' + str(o) + ' ocupaciones ;' + str(g) + ' generos ;' + str(u) + ' usuarios ;' + str(m) + ' peliculas ;' + str(p) + ' puntuaciones; '+str(me)+'items; '+str(r)+'ropa'
+    (o,g,u,m,p)=populate()
+    mensaje = 'Se han cargado: ' + str(o) + ' ocupaciones ;' + str(g) + ' generos ;' + str(u) + ' usuarios ;' + str(m) + ' peliculas ;' + str(p) + ' puntuaciones; '
     logout(request)  # se hace logout para obligar a login cada vez que se vaya a poblar la BD
     return render(request, 'mensaje.html',{'titulo':'FIN DE CARGA','mensaje':mensaje,'STATIC_URL':settings.STATIC_URL})
 

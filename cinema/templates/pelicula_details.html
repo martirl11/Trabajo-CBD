@@ -75,7 +75,7 @@
                 <div class='rounded border border-dark mb-3 py-2 row' style='width:400px !important ; margin-top:20px;' >
                     <div class="card-img-col col-4">
                
-                        <img src="{% if item.imagen %}  ../../{{item.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}" class="card-img-top" alt="{{item.nombre}}">
+                        <img src="{% if row.imagen %}  ../../{{row.imagen}}{% else %}{% static 'img/img-not-found.svg' %}{% endif %}" class="card-img-top" alt="{{item.nombre}}">
                     </div>
                     <div class='col-4 alig-items-center'>
                         <h5><strong>{{row.nombre}}</strong></h5>

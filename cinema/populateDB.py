@@ -12,11 +12,10 @@ def populate():
     (m, mo)=populateMovies()
     p=populateRatings(u,m)
     #t=populateTaza()
-    r=populateRopa()
+    r=porblar_merchan()
     #po=populatePoster()
     #a=populateAccesorio()#USAMOS LOS DICCIONARIOS DE USUARIOS Y PELICULAS PARA ACELERAR LA CARGA EN PUNTUACIONES
-    me=populateItem()
-    return (o,g,us,mo,p,me,r)
+    return (o,g,us,mo,p,r)
 
 def populateOccupations():
     Ocupacion.objects.all().delete()
@@ -106,6 +105,20 @@ def populateRatings(u,m):
 
     return Puntuacion.objects.count()
 
+import cx_Oracle
+
+dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl.home')
+connection = cx_Oracle.connect(user="root_cbd_2", password="trabaj0CBD", dsn=dsn_tns)
+  
+   
+
+def porblar_merchan():
+    cursor = connection.cursor()
+    
+    cursor.callproc("POBLAR_MERCHAN", [])
+    connection.commit()
+    connection.close()
+    
 
     
 

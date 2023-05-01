@@ -56,7 +56,7 @@ class Ropa (Item):
 
 class Poster (Item):
     artista = models.CharField(max_length=100, verbose_name="Artista")
-    tamaño = models.CharField(max_length=100, verbose_name="tamaño")
+    tamano = models.CharField(max_length=100, verbose_name="tamano")
     tipo = models.CharField(max_length=100, choices=TIPO_POSTER, verbose_name="Tipo")
 
     def __str__(self):
@@ -82,7 +82,7 @@ class Taza (Item):
         db_table = 'CHIC_TAZA'
 
 class Accesorio (Item):
-    tamaño = models.CharField(max_length=50, verbose_name="Tamaño")
+    tamano = models.CharField(max_length=50, verbose_name="tamano")
     color = models.CharField(max_length=20, verbose_name="Color")
     material = models.CharField(max_length=50, verbose_name="Material")
     artista = models.CharField(max_length=100, verbose_name="Artista")

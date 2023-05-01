@@ -56,8 +56,8 @@ class CreatePosterForm(forms.ModelForm):
             'precio ': {
                 'required': 'Por favor ingrese el precio del artículo.',
             },
-            'tamaño': {
-                'required': 'Por favor ingrese el tamaño del artículo.',
+            'tamano': {
+                'required': 'Por favor ingrese el tamano del artículo.',
             },
             
         }
@@ -92,8 +92,8 @@ class CreateAccesorioForm(forms.ModelForm):
             'precio ': {
                 'required': 'Por favor ingrese el precio del artículo.',
             },
-            'tamaño': {
-                'required': 'Por favor ingrese el tamaño del artículo.',
+            'tamano': {
+                'required': 'Por favor ingrese el tamano del artículo.',
             },
             
         }

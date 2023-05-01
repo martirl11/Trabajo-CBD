@@ -64,3 +64,4 @@ class Puntuacion(models.Model):
     class Meta:
         ordering=('idPelicula','idUsuario', )
         db_table = 'CINEMA_PUNTUACION'
+

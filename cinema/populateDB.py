@@ -2,6 +2,7 @@
 from .models import Usuario, Ocupacion, Puntuacion, Pelicula, Categoria
 from chic.models import *
 from datetime import datetime
+from bing_image_downloader import downloader
 
 path = "data"
 
@@ -108,7 +109,7 @@ def populateRatings(u,m):
 
 import cx_Oracle
 
-dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl.home')
+dsn_tns = cx_Oracle.makedsn('localhost', '1521', service_name='orcl')
 connection = cx_Oracle.connect(user="root_cbd_2", password="trabaj0CBD", dsn=dsn_tns)
   
    
@@ -119,7 +120,14 @@ def porblar_merchan():
     cursor.callproc("POBLAR_MERCHAN")
     connection.commit()
     connection.close()
-    
+
+    items= Item.objects.all()
+    for i in items:
+        downloader.download(i.nombre, limit=1,  output_dir='static/images_items', 
+                    adult_filter_off=True, force_replace=False, timeout=60)
+        i.imagen = 'static/images_items/'+i.nombre+'/Image_1.jpg'
+        i.save()
+
 
     
 
